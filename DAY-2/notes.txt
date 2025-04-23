@@ -1,10 +1,10 @@
 How to create a repository?
 
-login as a admin --> settings --> create repository --> maven2(hosted)--> give name as jio-snapshot -->
+login as a admin --> settings --> create SNAPSHOT repository --> maven2(hosted)--> give name as amazon-snapshot -->
 select version policy [snapshot] --> scroll down ---> create repository. 
 
 
-login as a admin --> settings --> create repository --> maven2(hosted)--> give name as jio-release -->
+login as a admin --> settings --> create RELEASE repository --> maven2(hosted)--> give name as amazon-release -->
 select version policy [release] --> scroll down ---> create repository. 
 
 
