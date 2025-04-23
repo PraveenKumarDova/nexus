@@ -10,13 +10,13 @@ select version policy [release] --> scroll down ---> create repository.
 
 NOTE: For each project we are going to create two types of repositories.
 
-      1. jio-snapshot
-      2. jio-release
+      1. amazon-snapshot
+      2. amazon-release
 
 NOTE: Each repository we have separate URL
   
-     http://13.235.244.97:9676/repository/jio-release/
-     http://13.235.244.97:9676/repository/jio-snapshot/
+     http://13.235.244.97:9676/repository/amazon-release/
+     http://13.235.244.97:9676/repository/amazon-snapshot/
 
 
 
@@ -39,14 +39,14 @@ update the details in pom.xml
 
             <repository>
               <id>nexus</id>
-              <name>KK FUNDA Releases Nexus Repository</name>
-              <url>http://13.235.244.97:9676/repository/jio-release/</url>
+              <name>praveentechnologies Releases Nexus Repository</name>
+              <url>http://13.235.244.97:9676/repository/amazon-release/</url>
             </repository>
 
             <snapshotRepository>
               <id>nexus</id>
-              <name>KK FUNDA Snapshot Nexus Repository </name>
-              <url>http://13.235.244.97:9676/repository/jio-snapshot/</url>
+              <name>praveentechnologies Snapshot Nexus Repository </name>
+              <url>http://13.235.244.97:9676/repository/amazon-snapshot/</url>
             </snapshotRepository>
 
         </distributionManagement>
@@ -85,7 +85,9 @@ IQ] why it is always uploading into snapshot repo, why not release repo?
 
 ANS: In pom.xml <version> tag we defined "SNAPSHOT" , If you remove that tag then it will store in the release repo.
 
-add  <version>1.0.0</version>
+add  
+
+<version>1.0.0</version>
 
 
 NOTE: one version, you can create only once, If you are tying to deploy again without changing the version, you will get bad request error (400)
@@ -93,7 +95,7 @@ NOTE: one version, you can create only once, If you are tying to deploy again wi
    mvn clean deploy ----> Build will fail.
 
 
-settings ---> select repo --> policy --> allow redeploy ---> save
+settings ---> select RELEASE repository --> Deployment policy --> allow redeploy ---> save
 
 
 again disable the redeploy
@@ -111,8 +113,8 @@ again disable the redeploy
 
 IQ] what is the difference between snapshot and release ?
 
-SNAPSHOT: used in continuous deployment.
-Release : Before deploy into production.
+SNAPSHOT: used in continuous deployment in lower evironments
+Release : Before deploy into production server
 
 IQ] How to store artifacts into maven local repository?
 
@@ -129,7 +131,7 @@ IQ] How to store artifacts into maven remote repository?
 
 Requirement : release 1.0.0 has some bugs, I want to redeploy the artifact with the same version.
 
-sol:  settings --> repository --> jio-release --> scroll down --> Hosted --> allow redeploy --> save
+sol:  settings --> RELEASE repository --> amazon-release --> scroll down --> Hosted --> allow redeploy --> save
 
 
 Then mvn clean deploy ---> It will redeploy.
